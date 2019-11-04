@@ -34,8 +34,8 @@ addPopups(map, lng = NULL, lat = NULL, popup, layerId = NULL,
   group = NULL, options = popupOptions(), data = getMapData(map))
 
 addMarkers(map, lng = NULL, lat = NULL, layerId = NULL,
-  group = NULL, icon = NULL, popup = NULL, popupOptions = NULL,
-  label = NULL, labelOptions = NULL, options = markerOptions(),
+  group = NULL, popup = NULL, popupOptions = NULL, label = NULL,
+  labelOptions = NULL, options = markerOptions(),
   clusterOptions = NULL, clusterId = NULL, data = getMapData(map))
 
 addLabelOnlyMarkers(map, lng = NULL, lat = NULL, layerId = NULL,
@@ -148,13 +148,6 @@ the latitude column from \code{data})}
 recommended to escape the text using \code{\link[htmltools]{htmlEscape}()}
 for security reasons)}
 
-\item{icon}{the icon(s) for markers; an icon is represented by an R list of
-the form \code{list(iconUrl = "?", iconSize = c(x, y))}, and you can use
-\code{\link{icons}()} to create multiple icons; note when you use an R list
-that contains images as local files, these local image files will be base64
-encoded into the HTML page so the icon images will still be available even
-when you publish the map elsewhere}
-
 \item{popupOptions}{A Vector of \code{\link{popupOptions}} to provide popups}
 
 \item{label}{a character vector of the HTML content for the labels}
@@ -168,6 +161,13 @@ options for each label. Default \code{NULL}}
 options}
 
 \item{clusterId}{the id for the marker cluster layer}
+
+\item{icon}{the icon(s) for markers; an icon is represented by an R list of
+the form \code{list(iconUrl = "?", iconSize = c(x, y))}, and you can use
+\code{\link{icons}()} to create multiple icons; note when you use an R list
+that contains images as local files, these local image files will be base64
+encoded into the HTML page so the icon images will still be available even
+when you publish the map elsewhere}
 
 \item{radius}{a numeric vector of radii for the circles; it can also be a
 one-sided formula, in which case the radius values are derived from the

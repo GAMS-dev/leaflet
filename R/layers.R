@@ -610,7 +610,6 @@ labelOptions <- function(
 #' @export
 addMarkers <- function(
   map, lng = NULL, lat = NULL, layerId = NULL, group = NULL,
-  icon = NULL,
   popup = NULL,
   popupOptions = NULL,
   label = NULL,
@@ -621,36 +620,6 @@ addMarkers <- function(
   data = getMapData(map)
 ) {
   if (missing(labelOptions)) labelOptions <- labelOptions()
-
-  if (!is.null(icon)) {
-    # If custom icons are specified, we need to 1) deduplicate any URLs/files,
-    # so we can efficiently send e.g. 1000 markers that all use the same 2
-    # icons; and 2) do base64 encoding on any local icon files (as opposed to
-    # URLs [absolute or relative] which will be left alone).
-
-    # If formulas are present, they must be evaluated first so we can pack the
-    # resulting values
-    icon <- evalFormula(list(icon), data)[[1]]
-
-    if (inherits(icon, "leaflet_icon_set")) {
-      icon <- iconSetToIcons(icon)
-    }
-
-    # Pack and encode each URL vector; this will be reversed on the client
-    icon$iconUrl         <- b64EncodePackedIcons(packStrings(icon$iconUrl))
-    icon$iconRetinaUrl   <- b64EncodePackedIcons(packStrings(icon$iconRetinaUrl))
-    icon$shadowUrl       <- b64EncodePackedIcons(packStrings(icon$shadowUrl))
-    icon$shadowRetinaUrl <- b64EncodePackedIcons(packStrings(icon$shadowRetinaUrl))
-
-    # if iconSize is of length 2 and there is one icon url, wrap the icon size in a list
-    if (length(icon$iconSize) == 2) {
-      if (is.numeric(icon$iconSize[[1]]) && is.numeric(icon$iconSize[[2]])) {
-        icon$iconSize <- list(icon$iconSize)
-      }
-    }
-
-    icon <- filterNULL(icon)
-  }
 
   if (!is.null(clusterOptions))
     map$dependencies <- c(map$dependencies, markerClusterDependencies())

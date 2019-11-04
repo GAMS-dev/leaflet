@@ -1,7 +1,7 @@
 Package: leaflet
 Type: Package
-Title: Create Interactive Web Maps with the JavaScript 'Leaflet' Library
-Version: 2.0.2
+Title: Create Interactive Web Maps with the JavaScript 'Leaflet' Library (adjusted for use in MIRO to remove GPL-2 dependencies)
+Version: 2.0.2.999
 Authors@R: c(
       person("Joe", "Cheng", email = "joe@rstudio.com", role = c("aut", "cre")),
       person("Bhaskar", "Karambelkar", role = c("aut")),
@@ -25,7 +25,8 @@ Authors@R: c(
       person("Robert Kajic", role = c("ctb", "cph"), comment = "leaflet-locationfilter plugin"),
       person("Mapbox", role = c("ctb", "cph"), comment = "leaflet-omnivore plugin"),
       person("Michael Bostock", role = c("ctb", "cph"), comment = "topojson"),
-      person("RStudio", role = c("cph"))
+      person("RStudio", role = c("cph")),
+      person("Frederik", "Proske", email = "fproske@gams.com", role = c("ctb"))
     )
 Maintainer: Joe Cheng <joe@rstudio.com>
 Description: Create and customize interactive maps using the 'Leaflet'
@@ -42,7 +43,6 @@ Imports:
     htmlwidgets,
     htmltools,
     magrittr,
-    markdown,
     methods,
     png,
     RColorBrewer,
@@ -50,7 +50,7 @@ Imports:
     scales (>= 1.0.0),
     sp,
     stats,
-    viridis (>= 0.5.1),
+    viridisLite (>= 0.3.0),
     leaflet.providers (>= 1.8.0)
 Suggests:
     knitr,
