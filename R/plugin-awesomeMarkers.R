@@ -43,7 +43,7 @@ leafletAmFontAwesomeDependencies <- function(map) {
 # Required for using Font-Awesome Fonts
 # @param map the map to add awesome Markers to.
 addFontAwesome <- function(map) {
-  map$dependencies <- c(map$dependencies, leafletAmFontAwesomeDependencies())
+  map$dependencies <- map$dependencies
   map
 }
 
